@@ -82,7 +82,7 @@ ggplot() +
                size = 1.5, show.legend=TRUE) +
     scale_colour_manual(name="Labels", values=c(Mean.Sim="#009E73",Mean.Th="black")) +
     scale_linetype_manual(name="Labels", values=c(Mean.Sim="dashed",Mean.Th="solid"), guide=FALSE)+
-    stat_function(fun = dnorm, size = 2) + 
+    stat_function(fun = dnorm, size = 2, args = list(mean = mean_theory)) + 
     labs(x = "Means",
          y = "Counts",
          title = "Histogram of the means of exponential distribution simulations")
