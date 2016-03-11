@@ -44,7 +44,7 @@ The sample mean is `r mean_sim_means` and the theoretical mean is `r
 mean_theory`. As you can see in this figure, the sample distribution
 is very closely centered to the theoretical distribution.
 
-```{r} histogram of means
+```{r histogram of means}
 ggplot() +
     aes(sim_means) +
     geom_histogram(binwidth=0.1) +

@@ -31,13 +31,9 @@ also compute the mean of the sample and the variance. We also set the seed of ea
 
 ```r
 sim_means <- NULL
-for (i in 1 : N) {
-    set.seed(i)
-    sim <- rexp(n,lambda)
-    sim_means = c(sim_means, mean(sim))
-}
-mean_sim_means <- mean(sim_means)
-var_sim_means  <- var(sim_means)
+for (i in 1 : 1000) sim_means <- c(sim_means, mean(rexp(ndraw,lambda)))
+mean_sim <- mean(sim_means)
+var_sim <- var(sim_means)
 ```
 
 # Comparing the sample mean to the theoretical mean
@@ -46,7 +42,8 @@ The sample mean is 5.002327 and the theoretical mean is `r
 mean_theory`. As you can see in this figure, the sample distribution
 is very closely centered to the theoretical distribution.
 
-```{r} histogram of means
+
+```r
 ggplot() +
     aes(sim_means) +
     geom_histogram(binwidth=0.1) +
@@ -58,6 +55,8 @@ ggplot() +
          y = "Counts",
          title = "Histogram of the means of exponential distribution simulations")
 ```
+
+![](expo_clt_files/figure-html/histogram of means-1.png)
 
 
 # Comparing the sample variance to the theoretical variance
