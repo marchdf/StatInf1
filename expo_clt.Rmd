@@ -31,8 +31,8 @@ time we do a simulation, we save the mean to a vector of means. We
 also compute the mean of the sampe and the variance.
 
 ```{r}
-sim_means = NULL
-for (i in 1 : 1000) sim_means = c(sim_means, mean(rexp(ndraw,lambda)))
+sim_means <- NULL
+for (i in 1 : 1000) sim_means <- c(sim_means, mean(rexp(ndraw,lambda)))
 mean_sim <- mean(sim_means)
 var_sim <- var(sim_means)
 ```
