@@ -48,7 +48,7 @@ is very closely centered to the theoretical distribution.
 ```r
 ggplot() +
     aes(sim_means) +
-    geom_histogram(binwidth=0.1) +
+    geom_histogram(aes(y=..density..),binwidth=0.1) +
     geom_vline(aes(xintercept=mean_theory, colour="Mean.Th", linetype = "Mean.Th"),
                size = 1.5) +
     geom_vline(aes(xintercept=mean_sim_means, colour="Mean.Sim", linetype = "Mean.Sim"),
@@ -56,7 +56,7 @@ ggplot() +
     scale_colour_manual(name="Labels", values=c(Mean.Sim="#009E73",Mean.Th="black")) +
     scale_linetype_manual(name="Labels", values=c(Mean.Sim="dashed",Mean.Th="solid"), guide=FALSE)+
     labs(x = "Means",
-         y = "Counts",
+         y = "Density",
          title = "Histogram of the means of exponential distribution simulations")
 ```
 
@@ -75,7 +75,7 @@ $N(\mu, \frac{\sigma}{\sqrt{n}}) = N(5,0.625)$
 ```r
 ggplot() +
     aes(sim_means) +
-    geom_histogram(binwidth=0.1) +
+    geom_histogram(aes(y=..density..),binwidth=0.1) +
     geom_vline(aes(xintercept=mean_theory, colour="Mean.Th", linetype = "Mean.Th"),
                size = 1.5) +
     geom_vline(aes(xintercept=mean_sim_means, colour="Mean.Sim", linetype = "Mean.Sim"),
@@ -84,7 +84,7 @@ ggplot() +
     scale_linetype_manual(name="Labels", values=c(Mean.Sim="dashed",Mean.Th="solid"), guide=FALSE)+
     stat_function(fun = dnorm, size = 2, args = list(mean = mean_theory, sd = sqrt(var_theory_means))) + 
     labs(x = "Means",
-         y = "Counts",
+         y = "Density",
          title = "Histogram of the means of exponential distribution simulations")
 ```
 
