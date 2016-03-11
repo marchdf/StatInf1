@@ -68,5 +68,5 @@ The sample variance is `r var_sim_means` and the theoretical variance
 is `r var_theory_means`. As you can see in this figure, which is
 identical to the previous one with the expected normal distribution
 contour, the distribution of the means follows a normal distribution
-$N(\mu, \frac{\sigma}{\sqrt{n}}) = N(`r mean_theory`,`r var_theory_means`$
+$N(\mu, \frac{\sigma}{\sqrt{n}}) = N(`r mean_theory`,`r var_theory_means`)$
 
