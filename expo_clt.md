@@ -71,3 +71,21 @@ identical to the previous one with the expected normal distribution
 contour, the distribution of the means follows a normal distribution
 $N(\mu, \frac{\sigma}{\sqrt{n}}) = N(5,0.625)$
 
+
+```r
+ggplot() +
+    aes(sim_means) +
+    geom_histogram(binwidth=0.1) +
+    geom_vline(aes(xintercept=mean_theory, colour="Mean.Th", linetype = "Mean.Th"),
+               size = 1.5) +
+    geom_vline(aes(xintercept=mean_sim_means, colour="Mean.Sim", linetype = "Mean.Sim"),
+               size = 1.5, show.legend=TRUE) +
+    scale_colour_manual(name="Labels", values=c(Mean.Sim="#009E73",Mean.Th="black")) +
+    scale_linetype_manual(name="Labels", values=c(Mean.Sim="dashed",Mean.Th="solid"), guide=FALSE)+
+    stat_function(fun = dnorm, size = 2) + 
+    labs(x = "Means",
+         y = "Counts",
+         title = "Histogram of the means of exponential distribution simulations")
+```
+
+![](expo_clt_files/figure-html/histogram of means with normal-1.png)
