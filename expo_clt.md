@@ -1,14 +1,10 @@
----
-title: "Statistical Inference: The connection between the exponential distribution and the central limit theorem"
-author: "Marc T. Henry de Frahan"
-output: 
-  html_document:
-    keep_md: true
----
+# Statistical Inference: The connection between the exponential distribution and the central limit theorem
+Marc T. Henry de Frahan  
 # Synopsis
 
 # Load some libraries
-```{r}
+
+```r
 library(ggplot2)
 ```
 
@@ -18,7 +14,8 @@ library(ggplot2)
 For the rest of this project, we set the rate parameter, lambda, to
 0.2, the number of simulations, $N$, to 1000, and the number of drawings for each simulation, $n$, to 40.
 
-```{r}
+
+```r
 lambda <- 0.2
 N <- 1000
 n <- 40
@@ -27,11 +24,12 @@ var_theory <- 1/(lambda*lambda)
 var_theory_means <- var_theory/n
 ```
 
-Let's run `r N` simulations of the exponential distribution. Each
+Let's run 1000 simulations of the exponential distribution. Each
 time we do a simulation, we save the mean to a vector of means. We
 also compute the mean of the sample and the variance. We also set the seed of each drawing so we can be sure that we can exactly reproduce the results.
 
-```{r}
+
+```r
 sim_means <- NULL
 for (i in 1 : N) {
     set.seed(i)
@@ -44,7 +42,7 @@ var_sim_means  <- var(sim_means)
 
 # Comparing the sample mean to the theoretical mean
 
-The sample mean is `r mean_sim_means` and the theoretical mean is `r
+The sample mean is 5.002327 and the theoretical mean is `r
 mean_theory`. As you can see in this figure, the sample distribution
 is very closely centered to the theoretical distribution.
 
@@ -64,8 +62,8 @@ ggplot() +
 
 # Comparing the sample variance to the theoretical variance
 
-The sample variance is `r var_sim_means` and the theoretical variance
-is `r var_theory_means`. As you can see in this figure, which is
+The sample variance is 0.6308244 and the theoretical variance
+is 0.625. As you can see in this figure, which is
 identical to the previous one with the expected normal distribution
 contour, the distribution of the means follows a normal distribution $ N(\mu, \frac{sigma}{\sqrt(n)}$ 
 
