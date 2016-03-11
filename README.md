@@ -21,4 +21,4 @@ A sample set of headings that could be used to guide the creation of your report
 - Sample Variance versus Theoretical Variance: Include figures (output from R) with titles. Highlight the variances you are comparing. Include text that explains your understanding of the differences of the variances.
 - Distribution: Via figures and text, explain how one can tell the distribution is approximately normal.
 
-A full rubrique for a succesful project can be found at this [link](https://github.com/lgreski/datasciencectacontent/blob/master/markdown/statinf-expDistChecklist.md)
+A full rubrique for a succesful project can be found at this [link](https://github.com/lgreski/datasciencectacontent/blob/master/markdown/statinf-expDistChecklist.md).
