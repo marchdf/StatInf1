@@ -33,13 +33,9 @@ also compute the mean of the sample and the variance. We also set the seed of ea
 
 ```{r}
 sim_means <- NULL
-for (i in 1 : N) {
-    set.seed(i)
-    sim <- rexp(n,lambda)
-    sim_means = c(sim_means, mean(sim))
-}
-mean_sim_means <- mean(sim_means)
-var_sim_means  <- var(sim_means)
+for (i in 1 : 1000) sim_means <- c(sim_means, mean(rexp(ndraw,lambda)))
+mean_sim <- mean(sim_means)
+var_sim <- var(sim_means)
 ```
 
 # Comparing the sample mean to the theoretical mean
