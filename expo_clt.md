@@ -68,5 +68,5 @@ ggplot() +
 The sample variance is 0.6308244 and the theoretical variance
 is 0.625. As you can see in this figure, which is
 identical to the previous one with the expected normal distribution
-contour, the distribution of the means follows a normal distribution $latex N(\mu, \frac{sigma}{\sqrt(n)}$ 
+contour, the distribution of the means follows a normal distribution $ N\left(\mu, \frac{sigma}{\sqrt{n}}\right)$ 
 
