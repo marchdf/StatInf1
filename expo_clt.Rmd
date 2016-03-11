@@ -21,16 +21,20 @@ For the rest of this project, we set the rate parameter, lambda, to
 ```{r}
 lambda <- 0.2
 mean_theory <- 1/lambda
+var_theory <- 1/(lambda*lambda)
 nsims <- 1000
 ndraw <- 40
 ```
 
 Let's run `r nsims` simulations of the exponential distribution. Each
-time we do a simulation, we save the mean to a vector of means.
+time we do a simulation, we save the mean to a vector of means. We
+also compute the mean of the sampe and the variance.
 
 ```{r}
 sim_means = NULL
 for (i in 1 : 1000) sim_means = c(sim_means, mean(rexp(ndraw,lambda)))
+mean_sim <- mean(sim_means)
+var_sim <- var(sim_means)
 ```
 
 # Comparing the sample mean to the theoretical mean
@@ -49,9 +53,12 @@ ggplot() +
     scale_linetype_manual(name="Labels", values=c(Mean.Sim="dashed",Mean.Th="solid"), guide=FALSE)+
     labs(x = "Value",
          y = "Counts",
-         title = "Histogram of exponential distribution simulations")
+         title = "Histogram of the means of exponential distribution simulations")
 ```
 
 
 # Comparing the sample variance to the theoretical variance
 
+The sample variance is `r var_sim` and the theoretical variance is `r
+var_theory`. As you can see in this figure, the sample distribution of the is
+very closely centered to the theoretical distribution.
