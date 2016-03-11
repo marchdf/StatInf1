@@ -15,30 +15,34 @@ library(ggplot2)
 
 # Setup
 
-We set lambda, the rate parameter, to 0.2 for the rest of this project and the number of simulations, n, to 1000.
+For the rest of this project, we set the rate parameter, lambda, to
+0.2, the number of simulations, nsims, to 1000, and the number of drawings for each simulation, ndraw, to 40.
+
 ```{r}
 lambda <- 0.2
 mean_theory <- 1/lambda
-n <- 1000
+nsims <- 1000
+ndraw <- 40
 ```
 
-Let's run `r n` simulations of the exponential distribution and save
-them to a variable. We also compute the sample mean.
+Let's run `r nsims` simulations of the exponential distribution. Each
+time we do a simulation, we save the mean to a vector of means.
+
 ```{r}
-sim <- rexp(n, lambda)
-mean_sim <- mean(sim)
+sim_means = NULL
+for (i in 1 : 1000) sim_means = c(sim_means, mean(rexp(ndraw,lambda)))
 ```
 
 # Comparing the sample mean to the theoretical mean
 
 The sample mean is `r mean_sim` and the theoretical mean is `r
-mean_theory`. As you can see in this figure, the distribution is very
-closely centered next to the theoretical distribution.
+mean_theory`. As you can see in this figure, the sample distribution
+is very closely centered to the theoretical distribution.
 
 ```{r} histogram of simulations
 ggplot() +
-    aes(sim) +
-    geom_histogram(binwidth=1) +
+    aes(sim_means) +
+    geom_histogram(binwidth=0.1) +
     geom_vline(aes(xintercept=mean_theory, colour="Mean.Th", linetype = "Mean.Th"), size = 1.5) +
     geom_vline(aes(xintercept=mean_sim, colour="Mean.Sim", linetype = "Mean.Sim"), size = 1.5, show.legend=TRUE) +
     scale_colour_manual(name="Labels", values=c(Mean.Sim="#009E73",Mean.Th="black")) +
@@ -47,4 +51,7 @@ ggplot() +
          y = "Counts",
          title = "Histogram of exponential distribution simulations")
 ```
+
+
+# Comparing the sample variance to the theoretical variance
 
