@@ -33,7 +33,9 @@ also compute the mean of the sample and the variance. We also set the seed of ea
 
 ```{r}
 sim_means <- NULL
-for (i in 1 : 1000) sim_means <- c(sim_means, mean(rexp(ndraw,lambda)))
+for (i in 1 : 1000){
+    sim_means <- c(sim_means, mean(rexp(ndraw,lambda)))
+}
 mean_sim <- mean(sim_means)
 var_sim <- var(sim_means)
 ```
@@ -48,8 +50,10 @@ is very closely centered to the theoretical distribution.
 ggplot() +
     aes(sim_means) +
     geom_histogram(binwidth=0.1) +
-    geom_vline(aes(xintercept=mean_theory, colour="Mean.Th", linetype = "Mean.Th"), size = 1.5) +
-    geom_vline(aes(xintercept=mean_sim_means, colour="Mean.Sim", linetype = "Mean.Sim"), size = 1.5, show.legend=TRUE) +
+    geom_vline(aes(xintercept=mean_theory, colour="Mean.Th", linetype = "Mean.Th"),
+               size = 1.5) +
+    geom_vline(aes(xintercept=mean_sim_means, colour="Mean.Sim", linetype = "Mean.Sim"),
+               size = 1.5, show.legend=TRUE) +
     scale_colour_manual(name="Labels", values=c(Mean.Sim="#009E73",Mean.Th="black")) +
     scale_linetype_manual(name="Labels", values=c(Mean.Sim="dashed",Mean.Th="solid"), guide=FALSE)+
     labs(x = "Means",
