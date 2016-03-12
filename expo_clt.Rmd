@@ -47,45 +47,29 @@ var_sim_means <- var(sim_means)
 
 # Comparing the sample mean to the theoretical mean
 
-The sample mean is `r mean_sim_means` and the theoretical mean is `r mean_theory`. As you can see in this figure, the sample distribution
+The sample mean is `r mean_sim_means` and the theoretical mean is `r mean_theory`. As shown in this figure, 
+
+the sample distribution
 is very closely centered to the theoretical distribution, as stated in the Central Limit Theorem.
 
-```{r histogram_means, echo = FALSE}
-ggplot() +
-    aes(sim_means) +
-    geom_histogram(aes(y=..density..),binwidth=0.1) +
-    geom_vline(aes(xintercept=mean_theory,
-                   colour="Mean.Th",
-                   linetype = "Mean.Th"),
-               size = 1.5) +
-    geom_vline(aes(xintercept=mean_sim_means,
-                   colour="Mean.Sim",
-                   linetype = "Mean.Sim"),
-               size = 1.5,
-               show.legend=TRUE) +
-    scale_colour_manual(name="Labels",
-                        values=c(Mean.Sim="#009E73",Mean.Th="black")) +
-    scale_linetype_manual(name="Labels",
-                          values=c(Mean.Sim="dashed",Mean.Th="solid"),
-                          guide=FALSE)+
-    labs(x = "Means",
-         y = "Density",
-         title = "Histogram of the means of exponential distribution simulations")
-```
 
-
-# Comparing the sample variance to the theoretical variance and examining the normal distribution
+# Comparing the sample variance to the theoretical variance and 
 
 The sample variance is `r var_sim_means` and the theoretical variance
-is `r var_theory_means`. As you can see in this figure, which is
-identical to the previous one with the expected normal distribution
-contour, the distribution of the means follows a normal distribution
-$N\left(\mu, \frac{\sigma}{\sqrt{n}}\right) = N(`r mean_theory`,`r var_theory_means`)$.
+is `r var_theory_means`. 
+
+
+# Normality of the distribution
+
+As shown in this figure, with the expected normal distribution
+contour in black, the distribution of the means has a shape close to a normal
+distribution $N\left(\mu, \frac{\sigma}{\sqrt{n}}\right) = N(`r mean_theory`,`r var_theory_means`)$.
 
 ```{r histogram_means_normal, echo = FALSE}
 ggplot() +
     aes(sim_means) +
-    geom_histogram(aes(y=..density..),binwidth=0.1) +
+    geom_histogram(aes(y=..density..),binwidth=0.1, colour='#E69F00', fill = '#E69F00', alpha = 0.5) +
+    geom_density(lwd=1.2,colour='#E69F00') +
     geom_vline(aes(xintercept=mean_theory,
                    colour="Mean.Th",
                    linetype = "Mean.Th"),
@@ -101,13 +85,12 @@ ggplot() +
                           values=c(Mean.Sim="dashed",Mean.Th="solid"),
                           guide=FALSE)+
     stat_function(fun = dnorm,
-                  size = 2,
+                  size = 1.2,
                   args = list(mean = mean_theory, sd = sqrt(var_theory_means))) +
     labs(x = "Means",
          y = "Density",
          title = "Histogram of the means of exponential distribution simulations")
 ```
-
 
 \newpage
 
