@@ -1,16 +1,20 @@
 ---
-title: "Statistical Inference: The connection between the exponential distribution and the central limit theorem"
+title: "Understanding the Central Limit Theorem through the exponential distribution"
 author: "Marc T. Henry de Frahan"
 output: 
   pdf_document
 ---
+
 # Synopsis
+In this report, we examine the central limit theorem by doing many
+simulations of random samplings of the exponential distribution. We
+measure the distribution of the means of these observations and show
+that it is approximately normally distributed as $N\left(\mu,\frac{\sigma}{\sqrt{n}}\right)$.
 
 # Load some libraries
 ```{r}
 library(ggplot2)
 ```
-
 
 # Setup
 
@@ -61,7 +65,7 @@ ggplot() +
 ```
 
 
-# Comparing the sample variance to the theoretical variance
+# Comparing the sample variance to the theoretical variance and examining the normal distribution
 
 The sample variance is `r var_sim_means` and the theoretical variance
 is `r var_theory_means`. As you can see in this figure, which is
