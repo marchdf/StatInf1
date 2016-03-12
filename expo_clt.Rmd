@@ -49,7 +49,7 @@ var_sim_means <- var(sim_means)
 The sample mean is `r mean_sim_means` and the theoretical mean is `r mean_theory`. As you can see in this figure, the sample distribution
 is very closely centered to the theoretical distribution.
 
-```{r histogram of means}
+```{r histogram_means}
 ggplot() +
     aes(sim_means) +
     geom_histogram(aes(y=..density..),binwidth=0.1) +
@@ -81,7 +81,7 @@ identical to the previous one with the expected normal distribution
 contour, the distribution of the means follows a normal distribution
 $N\left(\mu, \frac{\sigma}{\sqrt{n}}\right) = N(`r mean_theory`,`r var_theory_means`)$.
 
-```{r histogram of means with normal}
+```{r histogram_means_normal, echo = FALSE}
 ggplot() +
     aes(sim_means) +
     geom_histogram(aes(y=..density..),binwidth=0.1) +
@@ -105,4 +105,11 @@ ggplot() +
     labs(x = "Means",
          y = "Density",
          title = "Histogram of the means of exponential distribution simulations")
+```
+
+
+# Appendix
+
+## Some code chunks hidden in the document 
+```{r histogram_means_normal2, ref.label='histogram_means_normal', eval = FALSE}
 ```
