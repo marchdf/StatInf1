@@ -33,7 +33,7 @@ also compute the mean of the sample and the variance. We also set the seed of ea
 ```{r}
 sim_means <- NULL
 for (i in 1 : N){
-    set.seed(i);
+    set.seed(i)
     sim_means <- c(sim_means, mean(rexp(n,lambda)))
 }
 mean_sim_means <- mean(sim_means)
@@ -42,8 +42,7 @@ var_sim_means <- var(sim_means)
 
 # Comparing the sample mean to the theoretical mean
 
-The sample mean is `r mean_sim_means` and the theoretical mean is `r
-mean_theory`. As you can see in this figure, the sample distribution
+The sample mean is `r mean_sim_means` and the theoretical mean is `r mean_theory`. As you can see in this figure, the sample distribution
 is very closely centered to the theoretical distribution.
 
 ```{r histogram of means}
@@ -68,7 +67,7 @@ The sample variance is `r var_sim_means` and the theoretical variance
 is `r var_theory_means`. As you can see in this figure, which is
 identical to the previous one with the expected normal distribution
 contour, the distribution of the means follows a normal distribution
-$N\left(\mu, \frac{\sigma}{\sqrt{n}}\right) = N(`r mean_theory`,`r var_theory_means`)$
+$N\left(\mu, \frac{\sigma}{\sqrt{n}}\right) = N(`r mean_theory`,`r var_theory_means`)$.
 
 ```{r histogram of means with normal}
 ggplot() +
