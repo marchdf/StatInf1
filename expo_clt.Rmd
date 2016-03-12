@@ -47,7 +47,7 @@ var_sim_means <- var(sim_means)
 # Comparing the sample mean to the theoretical mean
 
 The sample mean is `r mean_sim_means` and the theoretical mean is `r mean_theory`. As you can see in this figure, the sample distribution
-is very closely centered to the theoretical distribution.
+is very closely centered to the theoretical distribution, as stated in the Central Limit Theorem.
 
 ```{r histogram_means, echo = FALSE}
 ggplot() +
