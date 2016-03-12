@@ -2,7 +2,8 @@
 title: "Understanding the Central Limit Theorem through the exponential distribution"
 author: "Marc T. Henry de Frahan"
 output: 
-  pdf_document
+  pdf_document:
+    number_sections: true
 ---
 
 # Synopsis
