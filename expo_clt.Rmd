@@ -12,17 +12,13 @@ simulations of random samplings of the exponential distribution. We
 measure the distribution of the means of these observations and show
 that it is approximately normally distributed as $N\left(\mu,\frac{\sigma}{\sqrt{n}}\right)$.
 
-# Load some libraries
-```{r}
-library(ggplot2)
-```
-
 # Setup
 
 For the rest of this project, we set the rate parameter, lambda, to
 0.2, the number of simulations, $N$, to 1000, and the number of drawings for each simulation, $n$, to 40.
 
 ```{r}
+library(ggplot2)
 lambda <- 0.2
 N <- 1000
 n <- 40
@@ -47,16 +43,36 @@ var_sim_means <- var(sim_means)
 
 # Comparing the sample mean to the theoretical mean
 
-The sample mean is `r mean_sim_means` and the theoretical mean is `r mean_theory`. As shown in this figure, 
+The sample mean is `r mean_sim_means` and the theoretical mean is `r mean_theory`. The Law of Large Numbers states that as we increase the number of simulations, the sample mean will converge to the theoretical mean. This is shown in the following figure.
 
-the sample distribution
-is very closely centered to the theoretical distribution, as stated in the Central Limit Theorem.
-
+```{r}
+cum_mean <- cumsum(sim_means)/(1:N)
+ggplot() +
+    aes(x = 1:N, y = cum_mean) +
+    geom_line(colour="#009E73", lwd=1.2) + 
+    geom_hline(aes(yintercept=mean_theory)) +
+    labs(x = "Simulation number",
+         y = "Cumulative mean",
+         title = "Law of Large Numbers: mean vs simulation count")
+```
 
 # Comparing the sample variance to the theoretical variance and 
 
 The sample variance is `r var_sim_means` and the theoretical variance
-is `r var_theory_means`. 
+is `r var_theory_means`. The Law of Large Numbers states that as we increase the number of simulations, the sample variance will converge to the theoretical variance. This is shown in the following figure.
+
+```{r}
+sim_vars <- NULL
+for (i in 1 : N){ sim_vars <- c(sim_vars, var(sim_means[1:i]))}
+ggplot() +
+    aes(x = 1:N, y = sim_vars) +
+    geom_line(colour="#009E73", lwd=1.2) + 
+    geom_hline(aes(yintercept=var_theory_means)) +
+    labs(x = "Simulation number",
+         y = "Cumulative variance",
+         title = "Law of Large Numbers: variance vs simulation count")
+```
+
 
 
 # Normality of the distribution
