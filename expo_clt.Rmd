@@ -111,6 +111,7 @@ ggplot() +
 \newpage
 
 # Appendix
+The version history of this document can be found at the (GitHub repository page)[https://github.com/marchdf/StatInf1].
 
 ## Code for the first histogram
 ```{r histogram_means2, ref.label='histogram_means', eval = FALSE}
